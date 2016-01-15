@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Meta Extractor</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="css/internal.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    
+    
+  </head>
+  <body>
+  
+	<nav class="navbar navbar-default navbar-fixed-top" id="topbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 navbar-brand">
+					MetaExtractor
+				</div>
+				<div class="navbar-right" id="userDets">
+					<div id="welcome"></div>
+					<button type="button" class="btn btn-sm btn-default" id="logOutButton"
+					aria-haspopup="true" aria-expanded="false"><strong>Log Out</strong></button>
+				</div>
+			</div>			
+		</div> 	
+	</nav>
+	
+	
+	<div class="container" id="contentContainer">
+		
+		<div class="modal fade" id="signUpInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header" id="signUpHeader">
+				<!--button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button-->
+				<div class="row">
+					<div class="col-md-6 modalButton">
+						<h4 class="modal-title center buts" id="signInButton">Sign In</h4>
+					</div>
+					<div class="col-md-6 modalButton">
+						<h4 class="modal-title center buts" id="signUpButton">Sign Up</h4>
+					</div>
+				</div>
+			  </div>
+			  <div class="modal-body">
+				
+				<form id = "signInForm">
+				  <div class="form-group">
+					<label for="recipient-name" class="control-label">User ID</label>
+					<input type="text" class="form-control" id="userid" />
+				  </div>
+				  <div class="warns" id="userSinAlert">
+				  </div>
+				  <div class="form-group">
+					<label for="recipient-name" class="control-label">Password</label>
+					<input type="password" class="form-control" id="pass" />
+				  </div>
+				  <div class="warns" id="passSinAlert">
+				  </div>
+				</form>
+				
+				<form id = "signUpForm">
+				  <div class="form-group">
+					<label for="uname" class="control-label">Name</label>
+					<input type="text" class="form-control" id="uname" />
+				  </div>
+				  <div class="form-group">
+					<label for="desuid" class="control-label">Desired ID</label>
+					<input type="text" class="form-control" id="desuid" />
+				  </div>
+				  <div class="warns" id="userDupAlert">
+				  </div>
+				  <div class="form-group">
+					<label for="despass" class="control-label">Password</label>
+					<input type="password" class="form-control" id="despass" />
+				  </div>
+				</form>
+				
+			  </div>
+			  <div class="modal-footer" id="mfSignIn">
+				<button type="button" class="btn btn-success" id="sinbutton">Sign In</button>
+			  </div>
+			  <div class="modal-footer" id="mfSignUp">
+				<button type="button" class="btn btn-success" id="supbutton">Sign Up</button>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+		
+		
+		<div class="row" id="formContainer">
+			<div class="col-md-6 col-md-offset-3">
+				<form class="form-horizontal">
+					<div class="form-group center">
+						<div class="input-group input-group-lg">
+							<span class="input-group-addon">https://</span>
+							<input type="text" class="form-control" id="url" />
+						</div>
+					<button type="button" class="btn btn-success btn-lg center" id="fetchButton" data-toggle="modal" data-target="#infoModal">Fetch</button>	
+					</div>
+				</form>			
+			</div>	
+		</div>
+		
+		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="metaheader">Meta Information</h4>
+			  </div>
+			  <div class="modal-body">
+				<form>
+				  <div class="form-group">
+					<label for="website-title" class="control-label">Title</label>
+					<input type="text" class="form-control" id="website-title" />
+				  </div>
+				  <div class="form-group">
+					<label for="website-desc" class="control-label">Description</label>
+					<input type="text" class="form-control" id="website-desc" />
+				  </div>
+				  <div class="form-group">
+					<label for="website-keys" class="control-label">Keywords</label>
+					<input type="text" class="form-control" id="website-keys" />
+				  </div>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-success">Store</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+	</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script src="js/internal.js"></script>
+      	
+    	
+  </body>
+</html>
